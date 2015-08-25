@@ -21,7 +21,7 @@
         }
     },
 	"scripts": {
-		"post-install-cmd": "cd vendor/node && npm install",
-		"post-update-cmd": "cd vendor/node && npm install"
+		"post-install-cmd": "echo Hello install",
+		"post-update-cmd": "echo Hello update"
 	}
 }
