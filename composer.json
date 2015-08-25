@@ -1,5 +1,5 @@
 {
-    "name": "Teleservice/MsSQLLinux",
+    "name": "teleservice/cakephp-mssql-linux",
     "description": "MsSQLLinux plugin for CakePHP, Used to handling MsSQL in linux",
     "type": "cakephp-plugin",
     "require": {
