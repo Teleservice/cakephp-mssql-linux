@@ -4,11 +4,6 @@ CakePHP MsSQL plugin for linux
 ## Requirements
 NodeJS v0.12
 
-## Node Dependencies
-daemonize2
-
-mssql
-
 ## Installation
 
 Add this to your composer.json
