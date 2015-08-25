@@ -23,6 +23,8 @@ if (process.argv.length !== 3) {
 }
 
 var fs = require('fs');
+var path = require('path');
+var root = path.resolve(__dirname, '..', '..');
 
 try {
 	var argument = JSON.parse(fs.readFileSync(process.argv[2]));
@@ -31,15 +33,11 @@ try {
 	process.exit(1);
 }
 
-if (!fs.existsSync('/tmp/nodedriver')) {
-	fs.mkdirSync('/tmp/nodedriver');
-}
-
 //Starts server process
 var daemon = require("daemonize2").setup({
 	main: require('path').resolve(__filename, '..', '..', 'dist', 'Server.js'),
 	name: "nodedriver",
-	pidfile: '/tmp/nodedriver/nodedriver.pid',
+	pidfile: root + '/nodedriver.pid',
 	silent: true
 });
 
@@ -104,7 +102,7 @@ var startUpTimeout = setTimeout(function () {
 }, 5000);
 
 function checkBeforeSending() {
-	if (!fs.existsSync('/tmp/nodedriver/nodedriver.sock')) {
+	if (!fs.existsSync(root + '/nodedriver.sock')) {
 		setTimeout(checkBeforeSending, 100);
 	} else {
 		clearTimeout(startUpTimeout);
@@ -113,8 +111,8 @@ function checkBeforeSending() {
 }
 
 if (daemon.status() === 0) {
-	if (fs.existsSync('/tmp/nodedriver/nodedriver.sock')) {
-		fs.unlinkSync('/tmp/nodedriver/nodedriver.sock');
+	if (fs.existsSync(root + '/nodedriver.sock')) {
+		fs.unlinkSync(root + '/nodedriver.sock');
 	}
 	daemon.start();
 }

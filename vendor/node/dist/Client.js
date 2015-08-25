@@ -33,6 +33,7 @@ var path = require('path');
 var fs = require('fs');
 var net = require('net');
 var events = require('events');
+var root = path.resolve(__dirname, '..', '..');
 
 function delay(ms) {
 	return new _Promise(function (resolve) {
@@ -87,7 +88,7 @@ var Client = (function (_events$EventEmitter) {
 					case 2:
 						context$2$0.next = 4;
 						return _regeneratorRuntime.awrap(new _Promise(function (resolve, reject) {
-							_this._netClient = net.connect({ 'path': '/tmp/nodedriver/nodedriver.sock' }, function () {
+							_this._netClient = net.connect({ 'path': root + '/nodedriver.sock' }, function () {
 								resolve();
 							});
 							_this._netClient.on('error', function (e) {

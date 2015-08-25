@@ -16,6 +16,7 @@ var path = require('path');
 var fs = require('fs');
 var net = require('net');
 var events = require('events');
+var root = path.resolve(__dirname, '..', '..');
 
 function delay(ms){
 	return new Promise((resolve) => setTimeout(resolve, ms));
@@ -52,7 +53,7 @@ export class Client extends events.EventEmitter
 			return;
 		}
 		await new Promise((resolve, reject) => {
-			this._netClient = net.connect({'path': '/tmp/nodedriver/nodedriver.sock'}, () => {
+			this._netClient = net.connect({'path': root+'/nodedriver.sock'}, () => {
 				resolve();
 			});
 			this._netClient.on('error', (e) => {

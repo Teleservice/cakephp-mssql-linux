@@ -12,12 +12,16 @@
  */
 
 var fs = require('fs');
+
 var net = require('net');
-if(!fs.existsSync('/tmp/nodedriver')){
-	fs.mkdirSync('/tmp/nodedriver');
+var path = require('path');
+var root = path.resolve(__dirname, '..', '..');
+
+if(!fs.existsSync(root+'/tmp')){
+	fs.mkdirSync(root+'/tmp');
 }
-if(fs.existsSync('/tmp/nodedriver/nodedriver.sock')){
-	fs.unlinkSync('/tmp/nodedriver/nodedriver.sock');
+if(fs.existsSync(root+'/nodedriver.sock')){
+	fs.unlinkSync(root+'/nodedriver.sock');
 }
 
 var timeout = null;
@@ -51,7 +55,7 @@ class Server
 			addTimeout(30000);
 			new ClientConnection(client);
 		});
-		this._netServer.listen('/tmp/nodedriver/nodedriver.sock');
+		this._netServer.listen(root+'/nodedriver.sock');
 		console.log("Started");
 	}
 		
