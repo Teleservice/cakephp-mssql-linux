@@ -156,7 +156,7 @@ class Node extends \Cake\Database\Driver
 				self::$_enabled = true;
 				$path = realpath(dirname(__FILE__) . '/../../../vendor/node');
 				if(!file_exists($path."/node_modules")){
-					exec("cd $path && npm install > /dev/null");
+					exec("cd $path && npm install > /dev/null 2>&1");
 				}
 			}
 		}
