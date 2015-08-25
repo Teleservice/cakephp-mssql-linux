@@ -9,6 +9,7 @@
   "author": "",
   "license": "GPLv3",
   "dependencies": {
+	"babel-runtime": "^5.8.20",
     "daemonize2": "^0.4.2",
     "mssql": "^2.1.6"
   }
