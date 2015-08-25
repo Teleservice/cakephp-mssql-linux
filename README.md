@@ -11,12 +11,26 @@ mssql
 
 ## Installation
 
-Go into your plugin folder and clone this repo and rename it to MsSQLLinux.
+Add this to your composer.json
 
-Next go into MsSQLLinux/vendor/node and run
+```json
+{
+	"repositories": [
+		{
+		    "type": "git",
+		    "url": "https://github.com/teleservice/cakephp-mssql-linux.git"
+		}
+	],
+	"require": {
+		"teleservice/mssql-linux": "*",
+	}
+}
+```
+
+afterwards inside of your project folder, run the following
 
 ```bash
-$ npm install
+$ composer install
 ```
 
 ## Configuration
@@ -31,7 +45,7 @@ In your app.php add the following to Datasources
 	'host' => '<IP TO MsSQL Server>',
 	'username' => '<MsSQL USERNAME>',
 	'password' => '<MsSQL PASSWORD>',
-	'database' => '<MsSQL DATABASE>',
+	'database' => 'tests',
 	'encoding' => 'utf8',
 	'timezone' => 'UTC',
 	'cacheMetadata' => true,
@@ -51,7 +65,7 @@ Add this to your phpunit.xml.dist
 
 ```xml
 <testsuite name="MsSQLLinux Plugin Test Suite">
-	<directory>./plugins/MsSQLLinux/tests/TestCase</directory>
+	<directory>./vendor/teleservice/mssql-linux/tests/TestCase</directory>
 </testsuite>
 ```
 
